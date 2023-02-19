@@ -1,1 +1,18 @@
-<p>home works!</p>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link " [ngClass]="cadastroTab.class" aria-current="page"
+            (click)="tabsOnClick(cadastroTab, emailTab)">Cadastro</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " [ngClass]="emailTab.class" (click)="tabsOnClick(emailTab, cadastroTab)">E-mails</a>
+    </li>
+
+</ul>
+
+<ng-container *ngIf="emailTab.on; else teste">
+    tet
+</ng-container>
+
+<ng-template #teste>
+    teste
+</ng-template>
