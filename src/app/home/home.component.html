@@ -9,10 +9,10 @@
 
 </ul>
 
-<ng-container *ngIf="emailTab.on; else teste">
-    tet
+<ng-container *ngIf="cadastroTab.on; else teste">
+    <app-cadastro></app-cadastro>
 </ng-container>
 
 <ng-template #teste>
-    teste
+    teste email
 </ng-template>

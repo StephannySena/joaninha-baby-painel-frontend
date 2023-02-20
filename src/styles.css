@@ -1,9 +1,12 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 .btn-pink {
-    background-color: rgb(239, 207, 241);
+    background-color: rgb(240, 175, 224);
 }
 
-.grey-bg {
-    
+.form-check-input:checked {
+    background-color: rgb(240, 175, 224);
+    border-color: rgb(240, 175, 224);
+
 }

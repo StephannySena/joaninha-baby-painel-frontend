@@ -1,0 +1,92 @@
+<div class="m-5">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let col of colsTable"> {{col}} </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cad of mockCadastros">
+                <td> {{cad.id}}</td>
+                <td> {{cad.email}}</td>
+                <td> {{cad.dataCadastro}}</td>
+                <td> {{cad.usouCupom}}</td>
+                <td> <i class="bi bi-pencil-square iconHover" (click)="clickEdit(cad)"></i></td>
+                <td> <i class="bi bi-trash3 iconHover" (click)="clickDelete(cad)"></i>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<ng-template #editModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Editar Cadastro</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="formCadastro">
+            <div class="mb-3">
+                <label for="id" class="form-label">Id</label>
+                <input type="text" class="form-control" formControlName="id" id="id" aria-describedby="id">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email" id="email" aria-describedby="email">
+            </div>
+            <div class="mb-3">
+                <label for="dtCad" class="form-label">Data Cadastro</label>
+                <input type="text" class="form-control" formControlName="dataCadastro" id="dataCadastro"
+                    aria-describedby="data Cadastro">
+            </div>
+
+            <div>
+                <span class="me-2">Usou Cupom?</span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" formControlName="usouCupom" type="radio" name="usouCupom"
+                        id="idRadioSim" [value]="true">
+                    <label class="form-check-label" for="idRadioSim">SIM</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" formControlName="usouCupom" type="radio" name="usouCupom"
+                        id="idRadioNao" [value]="false">
+                    <label class="form-check-label" for="idRadioNao">NÃO</label>
+                </div>
+            </div>
+
+            <div>
+                <ng-multiselect-dropdown [placeholder]="'Newsletters'" [settings]="dropdownSettings"
+                    [data]="dropdownList"
+                    (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll()" (onDeSelect)="onItemDeSelect($event)">
+                </ng-multiselect-dropdown>
+
+            </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <span *ngIf="showSuccessSaveMsg">{{ editMsg }}</span>
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancelar</button>
+        <button type="button" class="btn btn-light" (click)="clickSalvar()">Salvar</button>
+    </div>
+
+</ng-template>
+
+
+<ng-template #deleteModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Deletar Cadastro</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>{{ deleteMsg }}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Calcelar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Sim</button>
+    </div>
+</ng-template>

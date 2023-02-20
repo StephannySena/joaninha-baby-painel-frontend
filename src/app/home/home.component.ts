@@ -9,7 +9,7 @@ import { Tabs } from '../interface/tabs.interface';
 export class HomeComponent {
   public cadastroTab: Tabs = {
     class: 'active',
-    on: false
+    on: true
   };
 
   public emailTab: Tabs = {
