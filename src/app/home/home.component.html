@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link " [ngClass]="cadastroTab.class" aria-current="page"
-            (click)="tabsOnClick(cadastroTab, emailTab)">Cadastro</a>
+            (click)="tabsOnClick(cadastroTab, emailTab)">Cadastros</a>
     </li>
     <li class="nav-item">
         <a class="nav-link " [ngClass]="emailTab.class" (click)="tabsOnClick(emailTab, cadastroTab)">E-mails</a>
@@ -14,5 +14,5 @@
 </ng-container>
 
 <ng-template #teste>
-    teste email
+    <app-envio-emails></app-envio-emails>
 </ng-template>

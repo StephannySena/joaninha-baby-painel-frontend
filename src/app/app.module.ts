@@ -9,13 +9,15 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { EnvioEmailsComponent } from './envio-emails/envio-emails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CadastroComponent
+    CadastroComponent,
+    EnvioEmailsComponent
   ],
   imports: [
     BrowserModule,

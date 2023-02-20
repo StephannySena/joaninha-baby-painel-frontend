@@ -10,3 +10,8 @@
     border-color: rgb(240, 175, 224);
 
 }
+
+.iconHover:hover  {
+    color: rgb(245, 147, 220);
+    cursor: pointer;
+}

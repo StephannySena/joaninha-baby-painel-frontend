@@ -1,0 +1,71 @@
+<div class="container  mt-5 mb-2">
+    <div class="row align-items-start">
+        <div class="col-4">
+            <div class="mb-5">
+                <select class="form-select" aria-label="Tipo de e-mail">
+                    <option value="0">Selecione o tipo de e-mail</option>
+                    <option value="1">News</option>
+                    <option value="2">Promoções</option>
+                </select>
+            </div>
+
+            <form [formGroup]="formEmails">
+                <div class="mb-5">
+                    <label class="form-label" for="idTitiloProduto">Título do Produto</label>
+                    <input type="text" formControlName="titulo" class="form-control" id="idTitiloProduto">
+                </div>
+    
+                <div class="mb-5">
+                    <label class="form-label" for="idValorProduto">Valor do Produto</label>
+                    <input type="number" formControlName="valor" class="form-control" id="idValorProduto" placeholder="00,00">
+                </div>
+    
+                <div class="mb-5">
+                    <label for="imgProduto" class="form-label">Imagem do Produto</label>
+                    <input class="form-control" formControlName="img" type="file" id="imgProduto" accept=".png, .jpeg">
+                </div>
+    
+                <div class="text-end">
+                    <button class="btn btn-pink" (click)="addProduto()" [disabled]="qntItensAdd >= 3">Adicionar Produto</button>
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <div class="col-4"></div>
+
+        <div class="col-4">
+            <div class="mb-5">
+                <ng-multiselect-dropdown [placeholder]="'Selecione a newsletters'" [settings]="dropdownSettings"
+                    [data]="dropdownList" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                    (onDeSelectAll)="onDeSelectAll()" (onDeSelect)="onItemDeSelect($event)">
+                </ng-multiselect-dropdown>
+
+            </div>
+
+            <div class="border rounded text-center table-responsive mb-5">
+                <p>Itens Adicionados</p>
+                <table class="table table-striped text-center">
+                    <tbody>
+                        <tr *ngFor="let itemAdd of itensAdd">
+                            <td>{{ itemAdd.titulo}}</td>
+                            <td>{{ itemAdd.valor}}</td>
+                            <td>{{ itemAdd.link}}</td>
+                            <td>{{ itemAdd.img}}</td>
+                            <td>{{ itemAdd.img}}</td>
+                            <td> <i class="bi bi-trash3 iconHover"></i>
+
+                </table>
+            </div>
+
+            <div class="text-end">
+                <button class="btn btn-pink me-4">Pré-visualizar</button>
+                <button class="btn btn-pink">Enviar</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

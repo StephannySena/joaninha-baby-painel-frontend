@@ -39,8 +39,28 @@ export class CadastroComponent implements OnInit{
     },
   ];
 
-  public dropdownList: any = [];
-  public dropdownSettings: any = {};
+  public dropdownList: any = [
+    { item_id: 1, item_text: 'Fem 1 a 3' },
+    { item_id: 2, item_text: 'Fem 4 a 6' },
+    { item_id: 3, item_text: 'Fem > 8' },
+    { item_id: 4, item_text: 'Fem RN P M G' },
+    { item_id: 5, item_text: 'Masc 1 a 3' },
+    { item_id: 6, item_text: 'Masc 4 a 6' },
+    { item_id: 7, item_text: 'Masc > 8' },
+    { item_id: 8, item_text: 'Masc RN P M G' },
+  ];
+
+  public dropdownSettings: any = {
+    singleSelection: false,
+    idField: 'item_id',
+    textField: 'item_text',
+    selectAllText: 'Selecionar Todos',
+    unSelectAllText: 'Remover Todos',
+    searchPlaceholderText: 'Pesquisar',
+    itemsShowLimit: 4,
+    allowSearchFilter: true
+  };
+
   public selectedItems: any = [];
 
   public showSuccessSaveMsg: boolean = false;
@@ -95,43 +115,16 @@ export class CadastroComponent implements OnInit{
   public onSelectAll(items: any) {
     this.selectedItems = items;
     console.log('onSelectAll', this.selectedItems);
-
   }
   public onDeSelectAll() {
     this.selectedItems = [];
     console.log('onDeSelectAll', this.selectedItems);
-
   }
 
   public onItemDeSelect(item: any) {
     this.selectedItems = this.selectedItems.filter((deselected: any) => deselected.item_id !== item.item_id)
     console.log(this.selectedItems);
-    
-    
   }
 
-  ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Fem 1 a 3' },
-      { item_id: 2, item_text: 'Fem 4 a 6' },
-      { item_id: 3, item_text: 'Fem > 8' },
-      { item_id: 4, item_text: 'Fem RN P M G' },
-      { item_id: 5, item_text: 'Masc 1 a 3' },
-      { item_id: 6, item_text: 'Masc 4 a 6' },
-      { item_id: 7, item_text: 'Masc > 8' },
-      { item_id: 8, item_text: 'Masc RN P M G' },
-    ];
-
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Selecionar Todos',
-      unSelectAllText: 'Remover Todos',
-      searchPlaceholderText: 'Pesquisar',
-      itemsShowLimit: 4,
-      allowSearchFilter: true
-    };
-  }
-  
+  ngOnInit() {}
 }
