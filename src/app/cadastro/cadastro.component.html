@@ -1,5 +1,5 @@
 <div class="m-5">
-    <table class="table table-striped">
+    <table class="table table-striped text-center">
         <thead>
             <tr>
                 <th *ngFor="let col of colsTable"> {{col}} </th>
@@ -12,7 +12,7 @@
                 <td> {{cad.id}}</td>
                 <td> {{cad.email}}</td>
                 <td> {{cad.dataCadastro}}</td>
-                <td> {{cad.usouCupom}}</td>
+                <td> <i [ngClass]="cad.usouCupom === true? 'bi bi-check-circle text-success' : 'bi bi-x-circle text-danger'"></i></td>
                 <td> <i class="bi bi-pencil-square iconHover" (click)="clickEdit(cad)"></i></td>
                 <td> <i class="bi bi-trash3 iconHover" (click)="clickDelete(cad)"></i>
                 </td>
