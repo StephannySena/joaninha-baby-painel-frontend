@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { EnvioEmailsComponent } from './envio-emails/envio-emails.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { EnvioEmailsComponent } from './envio-emails/envio-emails.component';
     ReactiveFormsModule,
     FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

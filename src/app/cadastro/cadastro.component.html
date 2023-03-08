@@ -8,11 +8,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let cad of mockCadastros">
+            <tr *ngFor="let cad of cadastros">
                 <td> {{cad.id}}</td>
                 <td> {{cad.email}}</td>
                 <td> {{cad.dataCadastro}}</td>
-                <td> <i [ngClass]="cad.usouCupom === true? 'bi bi-check-circle text-success' : 'bi bi-x-circle text-danger'"></i></td>
+                <td> <i [ngClass]="cad.isCupomUsado === true? 'bi bi-check-circle text-success' : 'bi bi-x-circle text-danger'"></i></td>
                 <td> <i class="bi bi-pencil-square iconHover" (click)="clickEdit(cad)"></i></td>
                 <td> <i class="bi bi-trash3 iconHover" (click)="clickDelete(cad)"></i>
                 </td>
