@@ -11,6 +11,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { EnvioEmailsComponent } from './envio-emails/envio-emails.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WebsiteComponent } from './website/website.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     HomeComponent,
     CadastroComponent,
-    EnvioEmailsComponent
+    EnvioEmailsComponent,
+    WebsiteComponent
   ],
   imports: [
     BrowserModule,
