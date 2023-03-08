@@ -2,6 +2,6 @@ export interface Cadastro {
     id: string;
     email: String;
     dataCadastro: String;
-    usouCupom: boolean ;
+    isCupomUsado: boolean ;
     newsletters: any[];
 }

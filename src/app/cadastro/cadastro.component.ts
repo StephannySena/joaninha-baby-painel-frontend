@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Cadastro } from '../interface/cadastro.interface';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl } from '@angular/forms';
+import { CadastrosService } from '../service/cadastro.service';
 
 
 
@@ -10,33 +11,33 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
-export class CadastroComponent implements OnInit{
+export class CadastroComponent implements OnInit {
 
   @ViewChild('editModal') editModal: any;
   @ViewChild('deleteModal') deleteModal: any;
 
-  public mockCadastros: Cadastro[] = [
-    {
-      id: '1',
-      email: 'ste@teste.com',
-      dataCadastro: '19/02/2023',
-      usouCupom: false,
-      newsletters: []
-    },
-    {
-      id: '2',
-      email: 'teste@teste.com',
-      dataCadastro: '14/02/2023',
-      usouCupom: true,
-      newsletters: []
-    },
-    {
-      id: '3',
-      email: 'aefoklnfl@teste.com',
-      dataCadastro: '22/05/2022',
-      usouCupom: true,
-      newsletters: []
-    },
+  public cadastros: Cadastro[] = [
+    // {
+    //   id: '1',
+    //   email: 'ste@teste.com',
+    //   dataCadastro: '19/02/2023',
+    //   usouCupom: false,
+    //   newsletters: []
+    // },
+    // {
+    //   id: '2',
+    //   email: 'teste@teste.com',
+    //   dataCadastro: '14/02/2023',
+    //   usouCupom: true,
+    //   newsletters: []
+    // },
+    // {
+    //   id: '3',
+    //   email: 'aefoklnfl@teste.com',
+    //   dataCadastro: '22/05/2022',
+    //   usouCupom: true,
+    //   newsletters: []
+    // },
   ];
 
   public dropdownList: any = [
@@ -64,26 +65,26 @@ export class CadastroComponent implements OnInit{
   public selectedItems: any = [];
 
   public showSuccessSaveMsg: boolean = false;
-  
+
   public editMsg: String = 'Edição salva com sucesso!';
   public deleteMsg: String = '';
-  
+
   public formCadastro: FormGroup = new FormGroup({
-    id: new FormControl({value: '', disabled: true}),
+    id: new FormControl({ value: '', disabled: true }),
     email: new FormControl(''),
-    dataCadastro: new FormControl({value: '', disabled: true}),
-    usouCupom: new FormControl({value: false, disabled: false}),
+    dataCadastro: new FormControl({ value: '', disabled: true }),
+    usouCupom: new FormControl({ value: false, disabled: false }),
   })
-  
+
   public colsTable = ['Id', 'E-mail', 'Data Cadastro', 'Usou Cupom?'];
-  
-  constructor(public modalService: NgbModal) { }
+
+  constructor(public modalService: NgbModal, public cadastrosService: CadastrosService) { }
 
   public clickEdit(cad: any) {
     this.formCadastro.patchValue(cad);
-    this.openModal(this.editModal); 
+    this.openModal(this.editModal);
   }
-  
+
   public clickSalvar() {
     console.log('clickSalvar', this.formCadastro.value);
     this.showSuccessSaveMsg = true;
@@ -92,24 +93,24 @@ export class CadastroComponent implements OnInit{
       this.showSuccessSaveMsg = false;
     }, 1000);
 
-    
-  } 
-  
+
+  }
+
   public clickDelete(cad: any) {
     this.deleteMsg = `Tem certeza que deseja deletar o cadastro: ${cad.email}?`;
     this.openModal(this.deleteModal)
     console.log('clickDelete', cad);
-    
+
   }
-  
+
   public openModal(content: any) {
     this.modalService.open(content, { centered: true });
   }
-  
+
 
   public onItemSelect(item: any) {
     this.selectedItems.push(item)
-    console.log('onItemSelect' ,  this.selectedItems)
+    console.log('onItemSelect', this.selectedItems)
   }
 
   public onSelectAll(items: any) {
@@ -126,5 +127,16 @@ export class CadastroComponent implements OnInit{
     console.log(this.selectedItems);
   }
 
-  ngOnInit() {}
+  public getCadastros() {
+    this.cadastrosService.getAllCadastros().subscribe((allCad: any) => {
+      allCad.forEach((cadastro: any) => {
+        this.cadastros.push(cadastro)
+
+      });
+    });
+  }
+
+  ngOnInit() {
+    this.getCadastros();
+  }
 }
